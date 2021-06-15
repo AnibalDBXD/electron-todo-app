@@ -1,10 +1,10 @@
 {
-  "name": "electron-react-typescript-boilerplate",
-  "author": "@You",
-  "description": "Electron react boilerplate",
+  "name": "electron-todo-app",
+  "author": "@AnibalDBXD",
+  "description": "Todo app desktop",
   "version": "0.1.0",
   "build": {
-    "appId": "com.app_id"
+    "appId": "com.electron_todo_app"
   },
   "private": true,
   "dependencies": {
