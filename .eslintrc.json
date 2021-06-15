@@ -28,7 +28,11 @@
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
         "linebreak-style": 0,
-        "import/extensions": [2,"never"]
+        "import/extensions": [2,"never"],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"]
     },
     "settings": {
         "import/resolver": {
@@ -36,5 +40,13 @@
             "extensions": [".js", ".jsx", ".ts", ".tsx"]
           }
         }
-    }
+    },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "rules": {
+                "no-undef": "off"
+            }
+        }
+    ]
 }
