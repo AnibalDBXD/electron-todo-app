@@ -2,7 +2,7 @@ import React from "react";
 import PATHS from "./paths";
 import IRoute from "./types";
 
-const Home = React.lazy(() => import("../pages/Home"));
+const Home = React.lazy(() => import("../pages/Home/Home"));
 
 const ROUTES: IRoute[] = [
   {
