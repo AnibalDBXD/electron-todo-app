@@ -5,7 +5,7 @@ import ROUTES from "./routes";
 import Loading from "../components/Loading";
 
 const AppRouter = (): JSX.Element => (
-  <Suspense fallback={<Loading />}>
+  <Suspense fallback={<Loading isPage />}>
     <Router>
       <Switch>
         {ROUTES.map(({

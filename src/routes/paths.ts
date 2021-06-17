@@ -1,5 +1,6 @@
 enum PATHS {
-    Home = "/"
+    Home = "/",
+    Task = "/:id"
 }
 
 export default PATHS;
