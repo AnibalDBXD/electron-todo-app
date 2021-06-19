@@ -20,7 +20,6 @@ const HeaderInput = () => {
 
   const toggleCreating = () => {
     setIsCreating.toggle();
-    setInputValue("");
   };
 
   const handleCreateTask = () => {
@@ -28,6 +27,7 @@ const HeaderInput = () => {
       addTask?.({
         color: randomColor(), id: generate(), name: InputValue, time: dayjs(),
       });
+      setInputValue("");
     }
   };
 
