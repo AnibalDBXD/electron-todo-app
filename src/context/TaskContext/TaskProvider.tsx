@@ -33,7 +33,7 @@ const TaskProvider = ({ children }: IProps): JSX.Element => {
   }, [Tasks]);
 
   useEffect(() => {
-    setTasks(JSON.parse(storedTasks));
+    setTasks(JSON.parse(storedTasks || "[]"));
   }, []);
 
   return (
