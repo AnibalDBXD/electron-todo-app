@@ -10,5 +10,5 @@ export interface ITaskState {
 
 export interface ITaskActions {
     type: TaskActions;
-    payload: ITask | string;
+    payload: ITask | string | ITask[];
 }

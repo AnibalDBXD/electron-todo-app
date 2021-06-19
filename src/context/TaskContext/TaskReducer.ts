@@ -35,6 +35,11 @@ const TaskReducer = (state: ITaskState, action: ITaskActions): ITaskState => {
         ...state,
         Tasks: deleteTask(payload as string),
       };
+    case TaskActions.SET_TASKS:
+      return {
+        ...state,
+        Tasks: payload as ITask[],
+      };
     default:
       return state;
   }

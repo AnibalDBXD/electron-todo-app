@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useReducer } from "react";
+import useLocalStorage from "react-use-localstorage";
 import ITask from "../../pages/Home/List/Task/types";
 import TaskActions from "./TaskActions";
 import { initialState, TaskContext } from "./TaskContext";
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 const TaskProvider = ({ children }: IProps): JSX.Element => {
+  const [storedTasks, setValue] = useLocalStorage("TASKS");
   const [{ Tasks }, dispatch] = useReducer(TaskReducer, initialState);
 
   const addTask = (newTask: ITask): void => {
@@ -22,10 +24,17 @@ const TaskProvider = ({ children }: IProps): JSX.Element => {
   const deleteTask = (taskId: string): void => {
     dispatch({ payload: taskId, type: TaskActions.DELETE_TASK });
   };
+  const setTasks = (newTasks: ITask[]): void => {
+    dispatch({ payload: newTasks, type: TaskActions.SET_TASKS });
+  };
 
   useEffect(() => {
-    console.log("consle punto log");
+    if (JSON.stringify(Tasks) !== "[]") setValue(JSON.stringify(Tasks));
   }, [Tasks]);
+
+  useEffect(() => {
+    setTasks(JSON.parse(storedTasks));
+  }, []);
 
   return (
     <TaskContext.Provider
