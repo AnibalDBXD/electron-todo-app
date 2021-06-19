@@ -6,12 +6,14 @@ import { useHistory } from "react-router-dom";
 import relativeTime from "dayjs/plugin/relativeTime";
 import dayjs from "dayjs";
 import ITask from "./types";
+import { useTaskContext } from "../../../../context/TaskContext/TaskContext";
 
 dayjs.extend(relativeTime);
 
 const Task = ({
   color, name, time, id, isChecked,
 }: ITask) => {
+  const { deleteTask } = useTaskContext();
   const { push } = useHistory();
   return (
     <Grid gridGap={2} templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" padding={4} backgroundColor={color} borderRadius="20%" w="215px" h="215px">
@@ -42,6 +44,7 @@ const Task = ({
           color="red"
           aria-label="Delete"
           fontSize="20px"
+          onClick={() => deleteTask?.(id)}
           icon={<DeleteIcon />}
         />
       </GridItem>

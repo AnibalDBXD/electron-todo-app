@@ -7,22 +7,33 @@ const TaskReducer = (state: ITaskState, action: ITaskActions): ITaskState => {
 
   const insertEditedTask = (editedTask: ITask) => {
     const stateTasks = [...state.Tasks];
-    const editedTaskId = stateTasks.findIndex(({ id }) => id === editedTask.id);
+    const editedTaskIndex = stateTasks.findIndex(({ id }) => id === editedTask.id);
 
-    stateTasks[editedTaskId] = editedTask;
+    stateTasks[editedTaskIndex] = editedTask;
     return stateTasks;
+  };
+
+  const deleteTask = (deleteTaskId: string) => {
+    const stateTasks = [...state.Tasks];
+    const newTasks = stateTasks.filter(({ id }) => id !== deleteTaskId);
+    return newTasks;
   };
 
   switch (type) {
     case TaskActions.ADD_TASK:
       return {
         ...state,
-        Tasks: [payload, ...state.Tasks],
+        Tasks: [payload, ...state.Tasks] as ITask[],
       };
     case TaskActions.EDIT_TASK:
       return {
         ...state,
-        Tasks: insertEditedTask(payload),
+        Tasks: insertEditedTask(payload as ITask),
+      };
+    case TaskActions.DELETE_TASK:
+      return {
+        ...state,
+        Tasks: deleteTask(payload as string),
       };
     default:
       return state;
