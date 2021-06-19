@@ -1,7 +1,9 @@
+import { Dayjs } from "dayjs";
+
 interface ITask {
     color: string;
     name: string;
-    time: string;
+    time: Dayjs;
     id: string;
     isChecked?: boolean;
 }

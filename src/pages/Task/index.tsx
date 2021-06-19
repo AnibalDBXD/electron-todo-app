@@ -4,6 +4,7 @@ import {
   Text, IconButton, Box, Flex, Heading, Divider, Input, Center, useControllableState, Button,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import dayjs from "dayjs";
 import ListTask from "../Home/List/Task";
 
 const Task = () => {
@@ -54,7 +55,7 @@ const Task = () => {
           <Input value={color} onChange={handleColor} w="200px" h="150px" type="color" placeholder="Change name" />
         </Box>
         <Button colorScheme="green" onClick={handleSave}>Save</Button>
-        <ListTask name={name} color={color} time="uwU" isChecked id={id} />
+        <ListTask name={name} color={color} time={dayjs()} isChecked id={id} />
       </Center>
     </Box>
   );
