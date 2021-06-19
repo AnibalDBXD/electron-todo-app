@@ -2,7 +2,7 @@ import {
   IconButton, InputRightElement, Input, InputGroup, InputLeftElement, useBoolean,
 } from "@chakra-ui/react";
 import { SearchIcon, PlusSquareIcon, AddIcon } from "@chakra-ui/icons";
-import { FormEvent, useState } from "react";
+import { FormEvent, KeyboardEvent, useState } from "react";
 import { generate } from "shortid";
 import dayjs from "dayjs";
 import { useTaskContext } from "../../../context/TaskContext/TaskContext";
@@ -31,6 +31,12 @@ const HeaderInput = () => {
     }
   };
 
+  const handlePressEnter = (e: KeyboardEvent<HTMLInputElement>): void => {
+    if (e.code === "Enter") {
+      handleCreateTask();
+    }
+  };
+
   return (
     <InputGroup w="70%" size="lg">
       <InputLeftElement width="4.5rem" paddingRight="1.2rem">
@@ -48,7 +54,7 @@ const HeaderInput = () => {
         borderColor={`${isCreating ? "green.400" : "inherit"}`}
         onChange={handleChange}
         value={InputValue}
-        onSubmit={handleCreateTask}
+        onKeyDown={handlePressEnter}
         placeholder={`${isCreating ? "Create Task" : "Search task"}`}
       />
       <InputRightElement width="4.5rem">
