@@ -4,6 +4,7 @@ import TaskActions from "./TaskActions";
 export interface ITaskState {
     Tasks: ITask[],
     addTask?: (newTask: ITask) => void
+    editTask?: (taskId: ITask) => void;
 }
 
 export interface ITaskActions {

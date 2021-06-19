@@ -15,11 +15,16 @@ const TaskProvider = ({ children }: IProps): JSX.Element => {
     dispatch({ payload: newTask, type: TaskActions.ADD_TASK });
   };
 
+  const editTask = (editedTask: ITask): void => {
+    dispatch({ payload: editedTask, type: TaskActions.EDIT_TASK });
+  };
+
   return (
     <TaskContext.Provider
       value={{
         Tasks: state.Tasks,
         addTask,
+        editTask,
       }}
     >
       {children}

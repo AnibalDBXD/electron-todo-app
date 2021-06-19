@@ -3,7 +3,6 @@ export const COLORS = [
   "orange.500",
   "yellow.500",
   "green.500",
-  "tell.500",
   "blue.500",
   "cyan.500",
   "purple.500",
