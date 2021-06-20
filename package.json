@@ -47,7 +47,7 @@
     "foreman": "^3.0.1"
   },
   "main": "public/electron.js",
-  "homepage": "./",
+  "homepage": ".",
   "scripts": {
     "lint": "eslint . --fix",
     "start": "react-scripts start",
