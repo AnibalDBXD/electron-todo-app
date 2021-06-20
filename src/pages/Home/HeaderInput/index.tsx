@@ -25,7 +25,7 @@ const HeaderInput = () => {
   const handleCreateTask = () => {
     if (InputValue !== "") {
       addTask?.({
-        color: randomColor(), id: generate(), name: InputValue, time: dayjs(),
+        color: randomColor(), id: generate(), name: InputValue, time: dayjs(), isChecked: false,
       });
       setInputValue("");
     }

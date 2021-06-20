@@ -1,10 +1,11 @@
 import {
-  Text, Checkbox, Grid, IconButton, GridItem, useBoolean,
+  Text, Checkbox, Grid, IconButton, GridItem,
 } from "@chakra-ui/react";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useHistory } from "react-router-dom";
 import relativeTime from "dayjs/plugin/relativeTime";
 import dayjs from "dayjs";
+import { useState } from "react";
 import ITask from "./types";
 import { useTaskContext } from "../../../../context/TaskContext/TaskContext";
 
@@ -15,12 +16,16 @@ const Task = ({
 }: ITask) => {
   const { deleteTask, editTask } = useTaskContext();
   const { push } = useHistory();
-  const [currentIsChecked, setChecked] = useBoolean(isChecked);
+
+  const [IsChecked, setChecked] = useState<boolean>(isChecked);
 
   const handleCheck = () => {
-    setChecked.toggle();
-    editTask?.({
-      color, id, name, time, isChecked: currentIsChecked,
+    setChecked((prevValue) => {
+      const newValue = !prevValue;
+      editTask?.({
+        color, id, name, time, isChecked: newValue,
+      });
+      return newValue;
     });
   };
   return (
@@ -32,7 +37,7 @@ const Task = ({
         <Text color="white" textOverflow="clip" fontSize={20}>{name}</Text>
       </GridItem>
       <GridItem alignSelf="center" justifySelf="center">
-        <Checkbox onClick={handleCheck} isChecked={currentIsChecked} size="lg" />
+        <Checkbox onChange={handleCheck} isChecked={IsChecked} size="lg" />
       </GridItem>
       <GridItem
         colSpan={2}

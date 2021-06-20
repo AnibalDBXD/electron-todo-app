@@ -5,7 +5,7 @@ interface ITask {
     name: string;
     time: Dayjs;
     id: string;
-    isChecked?: boolean;
+    isChecked: boolean;
 }
 
 export default ITask;
